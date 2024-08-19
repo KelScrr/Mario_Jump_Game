@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-board {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid #333;
+    border-bottom: 15px solid #17d417;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#87CEEB, #E0F6FF);
+}
+
+.pipe {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    animation: pipe-animation 1.5s infinite linear;
+}
+
+.mario {
+    width: 240px;
+    position: absolute;
+    bottom: 0;
+}
+
+.jump {
+    animation: jump 500ms ease-out;
+}
+
+.clouds {
+    position: absolute;
+    width: 1000px;
+    animation: clouds-animation 15s infinite linear;
+    z-index: 6;
+}
+
+#high-scores-container {
+    left: 35%;
+    width: 30%;
+    text-align: center;
+    position: absolute;
+    top: 90px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.7); /* Background mais escuro */
+    padding: 20px; /* Aumenta o espaçamento interno do quadrado */
+    border-radius: 20px; /* Aumenta o raio da borda do quadrado */
+}
+
+
+
+#game-over {
+    text-align: center;
+    color: #333; /* Cor mais clara para o "Game Over" */
+    z-index: 5;
+    background: rgba(18, 119, 214, 0.5);
+    position: absolute;
+    bottom: 90%;
+    width: 100%;
+}
+
+#restart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+}
+
+.restart-button {
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: #2a0492;
+    color: #10c9c9;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+#score {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 36px;
+    color: red;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+#final-score {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #333; /* Cor mais clara para o "Score" no final do jogo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(84, 91, 97, 0.2);
+}
+
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 14, 14, 0.534); /* Background mais claro na tela inicial */
+    color: #fff; /* Cor do texto */
+    font-family: 'Arial', sans-serif; /* Fonte do texto */
+    text-align: center;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.square-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #10c9c9;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 40px;
+    position: relative;
+    background: rgba(44, 43, 43, 0.384); /* Fundo mais claro para o contêiner */
+}
+
+#high-scores-container {
+    left: 35%;
+    width: 30%;
+    text-align: center;
+    position: absolute;
+    top: 90px;
+    z-index: 10;
+    background: rgba(122, 112, 112, 0.5); /* Fundo um pouco mais escuro */
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.square-container h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.square-container button {
+    padding: 20px 40px;
+    font-size: 36px;
+    background-color: #1a0260; /* Cor mais escura para o botão Start */
+    color: #10c9c9;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.square-container button:hover {
+    background-color: #2a0492; /* Cor mais clara ao passar o mouse sobre o botão Start */
+}
+
+#high-scores-start {
+    font-size: 18px;
+    color: #fff; /* Cor branca para os números na tela inicial */
+}
+
+#high-scores-start span {
+    display: block;
+    margin: 10px 0;
+}
+
+#high-scores-start span.gold {
+    color: gold !important; /* Estilo ouro para a melhor pontuação na tela inicial */
+}
+
+#high-scores-start span.silver {
+    color: silver !important; /* Estilo prata para a segunda melhor pontuação na tela inicial */
+}
+
+#high-scores-start span.bronze {
+    color: #cd7f32 !important; /* Estilo bronze para a terceira melhor pontuação na tela inicial */
+}
+
+.start-content {
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.start-content h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+#start-button {
+    padding: 20px 40px;
+    font-size: 36px;
+    background-color: #1a0260;
+    color: #10c9c9;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#start-button:hover {
+    background-color: #1a0260;
+}
+
+.square-container:hover {
+    animation: pulse 0.5s ease infinite;
+}
+
+.graph {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #2a0492, #10c9c9);
+    margin-top: 20px;
+    border-radius: 50%;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pipe-animation {
+    from {
+        right: -60px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0;
+    }
+    40% {
+        bottom: 210px;
+    }
+    50% {
+        bottom: 210px;
+    }
+    60% {
+        bottom: 80px;
+    }
+    100% {
+        bottom: 0px;
+    }
+}
+
+@keyframes clouds-animation {
+    from {
+        right: -1000px;
+    }
+    to {
+        right: 100%;
+    }
+}
