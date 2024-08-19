@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Css/style.css"> 
+    <script src="./Js/script.js" defer></script>
+    <title>Mario Jump</title>
+
+    <style>
+body::before {
+    content: "By KelScr";
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    z-index: 1001;
+    animation: colorLoop 10s linear infinite; /* Animação de loop de cor a cada 10 segundos */
+}
+
+@keyframes colorLoop {
+    0% {
+        color: rgb(255, 0, 0); /* Vermelho */
+    }
+    25% {
+        color: rgb(0, 255, 0); /* Verde */
+    }
+    50% {
+        color: rgb(0, 0, 255); /* Azul */
+    }
+    75% {
+        color: rgb(255, 255, 0); /* Amarelo */
+    }
+    100% {
+        color: rgb(255, 0, 255); /* Magenta */
+    }
+}
+    </style>
+    
+</head>
+<body>
+    <div id="start-screen" class="start-screen">
+        <div class="square-container">
+            <h3>Top 5 Pontuações:</h3>
+            <!-- Adicione o campo de entrada para o nome do jogador -->
+            <input type="text" id="player-name" placeholder="Digite seu nome">
+            <div id="high-scores-start" class="high-scores-container"></div>
+            <button onclick="startGame()" id="start-button">Start</button>
+            <div class="graph"></div>
+        </div>
+    </div>
+    <div class="game-board">
+        <img src="images/clouds.png" class="clouds">
+        <img src="images/mario.gif" class="mario">
+        <img src="./images/pipe.png" class="pipe">
+        <div id="score">Score: 0</div>
+        <div id="final-score" class="hidden">
+            <h5>Score:</h5>  
+            <div id="game-over" class="hidden">
+                <div class="game-over-content">
+                    <img src="./images/game-over.png" alt="Game Over">
+                    <div id="restart-container">
+                        <button onclick="restartGame()" class="restart-button">Recomeçar</button>
+                    </div>
+                </div>
+            </div>
+            <div id="high-scores-container" class="hidden">
+                    <h2>Top 5 Pontuações:</h2>
+                <div id="high-scores"></div>
+            </div>
+            <div id="score-value"></div>
+        </div>
+    </div>
+</body>
+</html>
